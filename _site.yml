@@ -1,0 +1,7 @@
+name: "Introduction to R"
+output_dir: "docs"
+navbar:
+  title: "A very brief introduction to R"
+  left:
+    - text: "Home"
+      href: index.html
