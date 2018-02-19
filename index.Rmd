@@ -22,15 +22,15 @@ serve as a reference or as an in-depth discussion of the lanuage itself.
 # What is R and why use it?
 
 
-R is an environment for data manipulation, analysis and visualisation built around the R programming language.
+R is an environment for data manipulation, analysis and data visualisation built around the R programming language.
 
 At a first glance it may appear like a huge overkill to learn a programming language just
-for the sake of doing some data analysis like fitting a regression model. Other statistics
-software like [Stata](https://www.stata.com/) and [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/) offer graphical user interfaces where a wide range of analysis can be performed simply by selecting options from menus. In my personal experience, however, non-trivial analysis using those software packages eventually leads to writing some sort of script files (e.g. [Stata `.do` files](https://www.stata.com/manuals13/u16.pdf) or [SPSS syntax files](https://www.spss-tutorials.com/spss-syntax-editor-window/)) and for that you need to learn
+for the sake of doing some data analysis like fitting a regression model or estimating a mean. Other statistics
+software like [Stata](https://www.stata.com/) and [SPSS](https://www.ibm.com/analytics/us/en/technology/spss/) offer some graphical user interfaces where a wide range of analysis can be performed simply by selecting options from menus. In my personal experience, however, doing any non-trivial analysis with those software packages eventually leads to writing some sort of script files (e.g. [Stata `.do` files](https://www.stata.com/manuals13/u16.pdf) or [SPSS syntax files](https://www.spss-tutorials.com/spss-syntax-editor-window/)) and for that you need to learn
 those specific languages.
 
 
-R is by no means the only language used for data science. Other languages with
+R is by no means the only environment that can be used for data analysis. Other languages with
 support for data analysis are [Julia](https://julialang.org/) and [Python](https://www.python.org/).
 
 
@@ -46,15 +46,54 @@ GNU/Linux users can install it from the official repositories. For Ubuntu/Debian
 sudo apt-get update && apt-get install r-base
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-MacOS users should follow the instructions on https://cran.r-project.org/
+MacOS users should follow the instructions on https://cran.r-project.org/.
+
+## Packages ##
+
+R consists of two parts: the base system and an ecosystem of packages contributed by the community. Apart from the core functionality available in base R, everything else is provided through community contributed packages packages.
+
+As of 2017 there are more than 10,000 packages on CRAN (comprehensive R archive network).
+
+A lot of packages in R are not self-contained but use functionality provided by other packages (dependencies). In order to install a package with dependencies, all the packages listed as dependencies must be installed beforehand.
+
+To install a package (e.g. `ggplot2`) and all its dependencies, run:
+
+~~~
+install.packages('ggplot2')
+~~~
+
+To install a list of packages and all their dependencies (e.g. `ggplot2` and `zoo`), run:
+
+~~~
+install.packages(c('ggplot2', 'zoo'))
+~~~
+
+Most often we will use the functions and other objects provided in a package by loading the package into the environment. We will do it with the `library` function.
+
+```{r}
+# This will throw an error, (please look at the R console window to the right)
+# Error: could not find function "qplot"
+#because the functions in the
+# ggplot2 package are not exposed in the workspace environment
+
+qplot(rnom(50))
+
+# We can call the qplot function directly from the workspace after
+# loading the ggplot2 package that defines that function
+library(ggplot2)
+
+qplot(rnorm(50))
+
+```
 
 # How to start R?
-
 
 The recommended way to interact with R for the purposes of this exercise classes is to use the [R-Studio](https://www.rstudio.com/products/rstudio/download/) desktop IDE. Free versions of R-Studio Desktop are
 available for Windows, MacOS and for various flavours of Linux including Ubuntu/Debian, Fedora, RedHat and OpenSuse.
 
 # R-Studio
+
+[R-studio](https://www.rstudio.com/) is an integrated development environment (IDE) build specially for R. While not strictly necessary for working with R files it makes
 
 Please note that you must install R *before* launching R-Studio.
 
@@ -69,7 +108,9 @@ A R-Studio project is a convenient way to organise your work with R. In order to
 
 ## Create a script file
 
-R script files are simple text files used to store a sequence of R commands. Per convention R script files use the `.R` extension. While you can use the R console directly to execute commands, script files are more convenient because you can reproduce the steps of the programme, track the files with a VCS (e.g. [git](https://git-scm.com/)) and share the files with other persons.
+R script files are simple text files used to store a sequence of R commands. Per convention R script files use the `.R` extension. The `.R` file extension is important when working with R-Studio, because its R support features are enabled by default for `.R` files.
+
+While you can use the R console directly to execute commands, script files are more convenient because you can reproduce the steps of the programme, track the files with a VCS (e.g. [git](https://git-scm.com/)) and share the files with other persons.
 
 
 You can open and edit script files with any text editor but for non-trivial cases it is easier to use an editor with at least some support (syntax highlighting, linting, etc.) for the R language. Popular editors are [Emacs](http://www.gnu.org/software/emacs/) with the [ESS extension](http://ess.r-project.org/), [Vim](/http://www.vim.org/) with [Vim-R](http://www.vim.org/scripts/script.php?script_id=2628), [Eclipse](http://www.eclipse.org/eclipse/) with [StatET for R](http://www.walware.de/goto/statet), [Atom](/https://atom.io/) with [extensions](https://haroldpimentel.wordpress.com/2016/11/28/the-current-state-of-r-support-in-atom/) and [Tinn-R](https://sourceforge.net/projects/tinn-r/) among others.
@@ -86,9 +127,9 @@ getwd()
 
 When writing R scripts or code in any language it is important to follow a consistent
 style in order to produce *humanly* readable code. While there is no code standard for R,
-you can take a look at some [guidelines](https://google.github.io/styleguide/Rguide.xml).
+you can take a look at some [guidelines](http://adv-r.had.co.nz/Style.html).
 
-# Organising your work
+<!-- # Organising your work
 
 ## Git
 
@@ -96,7 +137,7 @@ While not strictly neccessary for working with R, a [version control system](htt
 
 There are may VCS solutions out there. Currently one of the most popular ones is [git](https://git-scm.com/).
 Using R
--------
+------- -->
 
 ### A very simple case ###
 
@@ -118,6 +159,12 @@ Open up a R console and type the following code:
 # Calculate 2 to the power of 8
 
 3 ^ 8
+
+# Calculate the (natural) logarithm of e
+log(exp(1))
+
+# Calculate the square root
+sqrt(4)
 
 # Take care with the precedence of operation
 -2^2 == -4
@@ -471,44 +518,6 @@ In those cases a google search can be the fastest way to find
 a question that has already been answerd.
 
 The [R FAQ list](https://cran.r-project.org/doc/FAQ/R-FAQ.html) list has collected a number of common problems and offers detailed explanations.
-
-## Packages ##
-
-R consists of two parts: the base system and an ecosystem of packages contributed by the community. Apart from the core functionality available in base R, everything else in R is provided through packages.
-
-As of 2017 there are more than 10,000 packages on CRAN (comprehensive R archive network).
-
-A lot of packages in R are not self-contained but use functionality provided by other packages (dependencies). In order to install a package with dependencies, all the packages listed as dependencies must be installed beforehand.
-
-To install a package (e.g. `ggplot2`) and all its dependencies, run:
-
-~~~
-install.packages('ggplot2')
-~~~
-
-To install a list of packages and all their dependencies (e.g. `ggplot2` and `zoo`), run:
-
-~~~
-install.packages(c('ggplot2', 'zoo'))
-~~~
-
-Most often we will use the functions and other objects provided in a package by loading the package into the environment. We will do it with the `library` function.
-
-```{r}
-# This will throw an error, (please look at the R console window to the right)
-# Error: could not find function "qplot"
-#because the functions in the
-# ggplot2 package are not exposed in the workspace environment
-
-qplot(rnom(50))
-
-# We can call the qplot function directly from the workspace after
-# loading the ggplot2 package that defines that function
-library(ggplot2)
-
-qplot(rnorm(50))
-
-```
 
 ## Dates ##
 

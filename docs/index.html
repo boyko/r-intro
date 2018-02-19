@@ -205,16 +205,30 @@ $(document).ready(function () {
 <p>The purpose of this introduction is to give a short overview of R funcionality used in the exercise classes accompanying the lecture on analysis and forecasting of economic time series. It is by no means intended to serve as a reference or as an in-depth discussion of the lanuage itself.</p>
 <div id="what-is-r-and-why-use-it" class="section level1">
 <h1>What is R and why use it?</h1>
-<p>R is an environment for data manipulation, analysis and visualisation built around the R programming language.</p>
-<p>At a first glance it may appear like a huge overkill to learn a programming language just for the sake of doing some data analysis like fitting a regression model. Other statistics software like <a href="https://www.stata.com/">Stata</a> and <a href="https://www.ibm.com/analytics/us/en/technology/spss/">SPSS</a> offer graphical user interfaces where a wide range of analysis can be performed simply by selecting options from menus. In my personal experience, however, non-trivial analysis using those software packages eventually leads to writing some sort of script files (e.g. <a href="https://www.stata.com/manuals13/u16.pdf">Stata <code>.do</code> files</a> or <a href="https://www.spss-tutorials.com/spss-syntax-editor-window/">SPSS syntax files</a>) and for that you need to learn those specific languages.</p>
-<p>R is by no means the only language used for data science. Other languages with support for data analysis are <a href="https://julialang.org/">Julia</a> and <a href="https://www.python.org/">Python</a>.</p>
+<p>R is an environment for data manipulation, analysis and data visualisation built around the R programming language.</p>
+<p>At a first glance it may appear like a huge overkill to learn a programming language just for the sake of doing some data analysis like fitting a regression model or estimating a mean. Other statistics software like <a href="https://www.stata.com/">Stata</a> and <a href="https://www.ibm.com/analytics/us/en/technology/spss/">SPSS</a> offer some graphical user interfaces where a wide range of analysis can be performed simply by selecting options from menus. In my personal experience, however, doing any non-trivial analysis with those software packages eventually leads to writing some sort of script files (e.g. <a href="https://www.stata.com/manuals13/u16.pdf">Stata <code>.do</code> files</a> or <a href="https://www.spss-tutorials.com/spss-syntax-editor-window/">SPSS syntax files</a>) and for that you need to learn those specific languages.</p>
+<p>R is by no means the only environment that can be used for data analysis. Other languages with support for data analysis are <a href="https://julialang.org/">Julia</a> and <a href="https://www.python.org/">Python</a>.</p>
 </div>
 <div id="how-to-install-r" class="section level1">
 <h1>How to install R?</h1>
 <p>Windows users can download the latest installer from <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a>.</p>
 <p>GNU/Linux users can install it from the official repositories. For Ubuntu/Debian users:</p>
 <pre><code>sudo apt-get update &amp;&amp; apt-get install r-base</code></pre>
-<p>MacOS users should follow the instructions on <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a></p>
+<p>MacOS users should follow the instructions on <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>.</p>
+<div id="packages" class="section level2">
+<h2>Packages</h2>
+<p>R consists of two parts: the base system and an ecosystem of packages contributed by the community. Apart from the core functionality available in base R, everything else is provided through community contributed packages packages.</p>
+<p>As of 2017 there are more than 10,000 packages on CRAN (comprehensive R archive network).</p>
+<p>A lot of packages in R are not self-contained but use functionality provided by other packages (dependencies). In order to install a package with dependencies, all the packages listed as dependencies must be installed beforehand.</p>
+<p>To install a package (e.g. <code>ggplot2</code>) and all its dependencies, run:</p>
+<pre><code>install.packages(&#39;ggplot2&#39;)</code></pre>
+<p>To install a list of packages and all their dependencies (e.g. <code>ggplot2</code> and <code>zoo</code>), run:</p>
+<pre><code>install.packages(c(&#39;ggplot2&#39;, &#39;zoo&#39;))</code></pre>
+<p>Most often we will use the functions and other objects provided in a package by loading the package into the environment. We will do it with the <code>library</code> function.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFRoaXMgd2lsbCB0aHJvdyBhbiBlcnJvciwgKHBsZWFzZSBsb29rIGF0IHRoZSBSIGNvbnNvbGUgd2luZG93IHRvIHRoZSByaWdodClcbiMgRXJyb3I6IGNvdWxkIG5vdCBmaW5kIGZ1bmN0aW9uIFwicXBsb3RcIlxuI2JlY2F1c2UgdGhlIGZ1bmN0aW9ucyBpbiB0aGVcbiMgZ2dwbG90MiBwYWNrYWdlIGFyZSBub3QgZXhwb3NlZCBpbiB0aGUgd29ya3NwYWNlIGVudmlyb25tZW50XG5cbnFwbG90KHJub20oNTApKVxuXG4jIFdlIGNhbiBjYWxsIHRoZSBxcGxvdCBmdW5jdGlvbiBkaXJlY3RseSBmcm9tIHRoZSB3b3Jrc3BhY2UgYWZ0ZXJcbiMgbG9hZGluZyB0aGUgZ2dwbG90MiBwYWNrYWdlIHRoYXQgZGVmaW5lcyB0aGF0IGZ1bmN0aW9uXG5saWJyYXJ5KGdncGxvdDIpXG5cbnFwbG90KHJub3JtKDUwKSkifQ==
+</div>
+</div>
 </div>
 <div id="how-to-start-r" class="section level1">
 <h1>How to start R?</h1>
@@ -222,6 +236,7 @@ $(document).ready(function () {
 </div>
 <div id="r-studio" class="section level1">
 <h1>R-Studio</h1>
+<p><a href="https://www.rstudio.com/">R-studio</a> is an integrated development environment (IDE) build specially for R. While not strictly necessary for working with R files it makes</p>
 <p>Please note that you must install R <em>before</em> launching R-Studio.</p>
 <p>Furthermore, take a look at the R-Studio <a href="https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf">cheat sheet</a>.</p>
 <div id="create-a-project-with-r-studio" class="section level2">
@@ -230,26 +245,28 @@ $(document).ready(function () {
 </div>
 <div id="create-a-script-file" class="section level2">
 <h2>Create a script file</h2>
-<p>R script files are simple text files used to store a sequence of R commands. Per convention R script files use the <code>.R</code> extension. While you can use the R console directly to execute commands, script files are more convenient because you can reproduce the steps of the programme, track the files with a VCS (e.g. <a href="https://git-scm.com/">git</a>) and share the files with other persons.</p>
+<p>R script files are simple text files used to store a sequence of R commands. Per convention R script files use the <code>.R</code> extension. The <code>.R</code> file extension is important when working with R-Studio, because its R support features are enabled by default for <code>.R</code> files.</p>
+<p>While you can use the R console directly to execute commands, script files are more convenient because you can reproduce the steps of the programme, track the files with a VCS (e.g. <a href="https://git-scm.com/">git</a>) and share the files with other persons.</p>
 <p>You can open and edit script files with any text editor but for non-trivial cases it is easier to use an editor with at least some support (syntax highlighting, linting, etc.) for the R language. Popular editors are <a href="http://www.gnu.org/software/emacs/">Emacs</a> with the <a href="http://ess.r-project.org/">ESS extension</a>, <a href="/http://www.vim.org/">Vim</a> with <a href="http://www.vim.org/scripts/script.php?script_id=2628">Vim-R</a>, <a href="http://www.eclipse.org/eclipse/">Eclipse</a> with <a href="http://www.walware.de/goto/statet">StatET for R</a>, <a href="/https://atom.io/">Atom</a> with <a href="https://haroldpimentel.wordpress.com/2016/11/28/the-current-state-of-r-support-in-atom/">extensions</a> and <a href="https://sourceforge.net/projects/tinn-r/">Tinn-R</a> among others.</p>
 <p>In the exercise classes we will be using R-Studio.</p>
 <p>When your project is successully created you can start using R by creating a script file. Open the <code>File</code> menu, click on <code>New File</code> and choose R-script. A new window named <code>Untitled1</code> should appear in the code pane. Click on the pane and save the file to disk by either clicking <code>File</code> -&gt; <code>Save</code> or by pressing <code>Ctrl-S</code>. By default files are stored with <code>.R</code> extension.</p>
 <p>When using a project, R-Studio configures R to use the project directory as a working directory. This is important because the working directory is used when resolving relative paths. If you use the R GUI directly, check the current working directory by executing:</p>
 <pre><code>getwd()</code></pre>
-<p>When writing R scripts or code in any language it is important to follow a consistent style in order to produce <em>humanly</em> readable code. While there is no code standard for R, you can take a look at some <a href="https://google.github.io/styleguide/Rguide.xml">guidelines</a>.</p>
-</div>
-</div>
-<div id="organising-your-work" class="section level1">
-<h1>Organising your work</h1>
-<div id="git" class="section level2">
-<h2>Git</h2>
-<p>While not strictly neccessary for working with R, a <a href="https://en.wikipedia.org/wiki/Version_control">version control system</a> (VCS) can greatly ease the pain of managing collections of files.</p>
-<p>There are may VCS solutions out there. Currently one of the most popular ones is <a href="https://git-scm.com/">git</a>. Using R ——-</p>
+<p>When writing R scripts or code in any language it is important to follow a consistent style in order to produce <em>humanly</em> readable code. While there is no code standard for R, you can take a look at some <a href="http://adv-r.had.co.nz/Style.html">guidelines</a>.</p>
+<!-- # Organising your work
+
+## Git
+
+While not strictly neccessary for working with R, a [version control system](https://en.wikipedia.org/wiki/Version_control) (VCS) can greatly ease the pain of managing collections of files.
+
+There are may VCS solutions out there. Currently one of the most popular ones is [git](https://git-scm.com/).
+Using R
+------- -->
 <div id="a-very-simple-case" class="section level3">
 <h3>A very simple case</h3>
 <p>In the simplest case we can use R as a sophisticated calculator. Note that lines starting with <code>#</code> are comments. The R interpreter does not execute them. They are used to document the programme and to give hints about the code in the file. Open up a R console and type the following code:</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENhbGN1bGF0ZSB0aGUgc3VtIG9mIDEgYW5kIDJcbjEgKyAyXG5cbiMgQ2FsY3VsYXRlIHRoZSBwcm9kdWN0IG9mIDQgYW5kIDdcbjQgKiA3XG5cbiNEaXZpZGUgMyBieSA0XG4zIC8gNFxuXG4jIENhbGN1bGF0ZSAyIHRvIHRoZSBwb3dlciBvZiA4XG5cbjMgXiA4XG5cbiMgVGFrZSBjYXJlIHdpdGggdGhlIHByZWNlZGVuY2Ugb2Ygb3BlcmF0aW9uXG4tMl4yID09IC00XG4oLTIpXjIgPT0gNCJ9
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENhbGN1bGF0ZSB0aGUgc3VtIG9mIDEgYW5kIDJcbjEgKyAyXG5cbiMgQ2FsY3VsYXRlIHRoZSBwcm9kdWN0IG9mIDQgYW5kIDdcbjQgKiA3XG5cbiNEaXZpZGUgMyBieSA0XG4zIC8gNFxuXG4jIENhbGN1bGF0ZSAyIHRvIHRoZSBwb3dlciBvZiA4XG5cbjMgXiA4XG5cbiMgQ2FsY3VsYXRlIHRoZSAobmF0dXJhbCkgbG9nYXJpdGhtIG9mIGVcbmxvZyhleHAoMSkpXG5cbiMgQ2FsY3VsYXRlIHRoZSBzcXVhcmUgcm9vdFxuc3FydCg0KVxuXG4jIFRha2UgY2FyZSB3aXRoIHRoZSBwcmVjZWRlbmNlIG9mIG9wZXJhdGlvblxuLTJeMiA9PSAtNFxuKC0yKV4yID09IDQifQ==
 </div>
 </div>
 <div id="assigning-objects" class="section level3">
@@ -375,20 +392,6 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaW5lcyA8LSBcIlxuWWVhcixNYWtlLE1vZGVsLERlc2Ny
 <p>The technical documentation is sometimes not that easy to understand or it can be hard to see how a particular problem can be solved only by reading the documentation. A great place to start searching for answers is the R <a href="http://r.789695.n4.nabble.com/">mailing list archive</a>.</p>
 <p>In those cases a google search can be the fastest way to find a question that has already been answerd.</p>
 <p>The <a href="https://cran.r-project.org/doc/FAQ/R-FAQ.html">R FAQ list</a> list has collected a number of common problems and offers detailed explanations.</p>
-</div>
-<div id="packages" class="section level2">
-<h2>Packages</h2>
-<p>R consists of two parts: the base system and an ecosystem of packages contributed by the community. Apart from the core functionality available in base R, everything else in R is provided through packages.</p>
-<p>As of 2017 there are more than 10,000 packages on CRAN (comprehensive R archive network).</p>
-<p>A lot of packages in R are not self-contained but use functionality provided by other packages (dependencies). In order to install a package with dependencies, all the packages listed as dependencies must be installed beforehand.</p>
-<p>To install a package (e.g. <code>ggplot2</code>) and all its dependencies, run:</p>
-<pre><code>install.packages(&#39;ggplot2&#39;)</code></pre>
-<p>To install a list of packages and all their dependencies (e.g. <code>ggplot2</code> and <code>zoo</code>), run:</p>
-<pre><code>install.packages(c(&#39;ggplot2&#39;, &#39;zoo&#39;))</code></pre>
-<p>Most often we will use the functions and other objects provided in a package by loading the package into the environment. We will do it with the <code>library</code> function.</p>
-<div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFRoaXMgd2lsbCB0aHJvdyBhbiBlcnJvciwgKHBsZWFzZSBsb29rIGF0IHRoZSBSIGNvbnNvbGUgd2luZG93IHRvIHRoZSByaWdodClcbiMgRXJyb3I6IGNvdWxkIG5vdCBmaW5kIGZ1bmN0aW9uIFwicXBsb3RcIlxuI2JlY2F1c2UgdGhlIGZ1bmN0aW9ucyBpbiB0aGVcbiMgZ2dwbG90MiBwYWNrYWdlIGFyZSBub3QgZXhwb3NlZCBpbiB0aGUgd29ya3NwYWNlIGVudmlyb25tZW50XG5cbnFwbG90KHJub20oNTApKVxuXG4jIFdlIGNhbiBjYWxsIHRoZSBxcGxvdCBmdW5jdGlvbiBkaXJlY3RseSBmcm9tIHRoZSB3b3Jrc3BhY2UgYWZ0ZXJcbiMgbG9hZGluZyB0aGUgZ2dwbG90MiBwYWNrYWdlIHRoYXQgZGVmaW5lcyB0aGF0IGZ1bmN0aW9uXG5saWJyYXJ5KGdncGxvdDIpXG5cbnFwbG90KHJub3JtKDUwKSkifQ==
-</div>
 </div>
 <div id="dates" class="section level2">
 <h2>Dates</h2>
