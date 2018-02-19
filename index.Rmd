@@ -93,7 +93,7 @@ available for Windows, MacOS and for various flavours of Linux including Ubuntu/
 
 # R-Studio
 
-[R-studio](https://www.rstudio.com/) is an integrated development environment (IDE) build specially for R. While not strictly necessary for working with R files it makes
+[R-studio](https://www.rstudio.com/) is an integrated development environment (IDE) for the R language. While not strictly necessary for working with R files it makes makes working on R projects considerably less painful.
 
 Please note that you must install R *before* launching R-Studio.
 
