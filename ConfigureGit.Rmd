@@ -13,7 +13,7 @@ output:
 
 Most of the time you will be using git through the R Studio integration. Before you can push commits to github, however, you need to to configure `git` first.
 
-On Windows right-click on your desktop to open the context menu. From that menu choose git bash. This will open a console window with a command prompt. On the command line enter (replace Your Name with your actual name but keep the quotation marks! and replace your@email.com with the email you used when you registered with Github).
+On Windows right-click on your desktop to open the context menu. From that menu choose git bash. This will open a window with a command prompt. On the command line enter (replace Your Name with your actual name but keep the quotation marks! and replace your@email.com with the email you used when you registered with Github).
 
 ```
 git config --global user.name "Your Name"
