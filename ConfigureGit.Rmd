@@ -15,27 +15,27 @@ Most of the time you will be using git through the R Studio integration. Before 
 
 On Windows right-click on your desktop to open the context menu. From that menu choose git bash. This will open a console window with a command prompt. On the command line enter (replace Your Name with your actual name but keep the quotation marks! and replace your@email.com with the email you used when you registered with Github).
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 git config --global user.name "Your Name"
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 and press `Enter`. Then enter the next line:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 git config --global user.email your@email.com
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 and press `Enter` again.
 
 On Linux/Mac open a shell and enter the lines above. To check that you have configured `git` properly enter
 
-~~~~~~~~~~~~~~~~~
+```
 git config --list
-~~~~~~~~~~~~~~~~~
+```
 
 in the git bash window. The first two lines of the output should look like this:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 user.name=Your Name
 user.email=your@email.com
-~~~~~~~~~~~~~~~~~~~~~~~~~
+```
